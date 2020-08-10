@@ -58,7 +58,4 @@ for i in range(1):
                 paragraph2.add_run("\n")
 
         document.save(str(degree) + "-" + str(j+1) + ".docx")
-        
-
-
 
