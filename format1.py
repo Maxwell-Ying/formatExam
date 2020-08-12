@@ -6,7 +6,6 @@ import docx
 from docx.enum.text import WD_LINE_SPACING
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import qn
-# import divide
 from docx.shared import Length, Pt
 
 from draw import draw_one_multi_pron, draw_two_multi_pron, draw_like

@@ -59,3 +59,6 @@ def draw_like(paragraph: Paragraph, words: List[str]):
     paragraph.add_run('\n')
 
 
+def draw_bold(paragraph: Paragraph, word: str):
+    run = paragraph.add_run(word)
+    run.bold = True

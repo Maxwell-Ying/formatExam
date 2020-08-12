@@ -15,5 +15,5 @@ def load_new_words(level):
 
 
 if __name__ == "__main__":
-    res = load_new_words(level=6)
+    res = load_new_words(level=2)
     print(res)
