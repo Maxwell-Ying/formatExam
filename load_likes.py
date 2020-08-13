@@ -1,8 +1,5 @@
 import os
-import random
 from typing import List
-
-from docx.text.paragraph import Paragraph
 
 
 def load_likes():

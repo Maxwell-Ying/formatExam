@@ -4,13 +4,12 @@ import random
 import docx
 from docx.enum.text import WD_LINE_SPACING
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-from docx.oxml.ns import qn
-from docx.shared import Length, Pt
+from docx.shared import Pt
 
+from common_format import format_normal, format_heading_run
 from draw import draw_one_multi_pron, draw_two_multi_pron, draw_like
 from load_new_words import load_new_words
 from load_book import load_pages
-from load_likes import load_likes
 from get_multi_pronouce import get_multi_pronounce
 from load_likes import get_similar_letters
 
@@ -20,31 +19,20 @@ brackets = "（   ）  （   ）  （   ）"
 
 all_words = load_new_words(6)
 all_letters = load_pages()
-# all_likes = load_likes()
 
 for index in all_words.keys():
     if index not in all_letters:
         continue
     doc_name = "六" + "年级第" + str(index) + "周课内巩固"
     document = docx.Document()
-    document.styles['Normal'].font.name = overall_font
-    document.styles['Normal'].font.size = Pt(15)
-    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'宋体')
-
+    format_normal(document)
     heading = document.add_heading('', level=1)
     heading_format = heading.paragraph_format
     heading_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
     run_head = heading.add_run(doc_name)
-    run_head.font.name = overall_font
-    run_head.font.size = Pt(17)
-    run_head._element.rPr.rFonts.set(qn('w:eastAsia'), overall_font)
-    run_head.bold = True
-
+    format_heading_run(run_head)
     paragraph = document.add_paragraph()
     head1 = paragraph.add_run("一、给下列词语注音并抄写\n")
-    head1.font.name = overall_font
-    head1.font.size = Pt(15)
-    head1._element.rPr.rFonts.set(qn('w:westAsia'), overall_font)
     head1.bold = True
     paragraph_format = paragraph.paragraph_format
     paragraph.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
@@ -99,9 +87,6 @@ for index in all_words.keys():
 
     paragraph4 = document.add_paragraph()
     head4 = paragraph4.add_run("四、多音字辨析\n")
-    head4.font.name = overall_font
-    head4.font.size = Pt(15)
-    head4._element.rPr.rFonts.set(qn('w:westAsia'), overall_font)
     head4.bold = True
     paragraph_format4 = paragraph4.paragraph_format
     paragraph_format4.line_spacing_rule = WD_LINE_SPACING.ONE_POINT_FIVE
