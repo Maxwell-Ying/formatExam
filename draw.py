@@ -56,9 +56,15 @@ def draw_like(paragraph: Paragraph, words: List[str]):
         # run2.bold = True
         run3 = paragraph.add_run(space)
 
-    paragraph.add_run('\n')
+
+def draw_new_line(paragraph:Paragraph):
+    paragraph.add_run("\n")
 
 
 def draw_bold(paragraph: Paragraph, word: str):
     run = paragraph.add_run(word)
     run.bold = True
+
+
+def draw_letter(paragraph: Paragraph, letter: str):
+    run = paragraph.add_run(letter + bracket * 3)

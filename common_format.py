@@ -1,6 +1,5 @@
-from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT, WD_LINE_SPACING
-from docx.opc.oxml import qn
+from docx.oxml.ns import qn
 from docx.shared import Pt
 from docx.text.paragraph import Paragraph
 from docx.text.run import Run
@@ -16,7 +15,7 @@ title_const = [
 ]
 
 
-def format_normal(document: Document):
+def format_normal(document):
     document.styles['Normal'].font.name = over_all_font
     document.styles['Normal'].font.size = Pt(15)
     document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'宋体')
