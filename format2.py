@@ -20,14 +20,15 @@ all_letters = load_new_letters(level)
 all_similarities = load_similar_letters(level)
 all_pronounce = load_multi_pronounce(level)
 
+document = docx.Document()
+format_normal(document)
+
 for index in all_words.keys():
     if index not in all_letters:
         continue
-    doc_name = day_in_week[2] + "年级第" + str(index) + "周课内巩固"
-    document = docx.Document()
-    format_normal(document)
+    doc_name = day_in_week[2] + "年级第" +str(index)+ "周课内巩固"
 
-    heading: Paragraph = document.add_heading('', level=0)
+    heading: Paragraph = document.add_heading('', level=1)
     heading_format = heading.paragraph_format
     format_heading(heading)
     run_head = heading.add_run(doc_name)
@@ -84,5 +85,5 @@ for index in all_words.keys():
         draw_two_multi_pron(paragraph4, all_pronounce[0], all_pronounce[1])
         all_pronounce = all_pronounce[2:]
 
-    document.save(os.path.join("result_"+str(level), str(level)+"-"+str(index) + ".docx"))
+document.save(os.path.join("result_"+str(level), str(level) + ".docx"))
     # break

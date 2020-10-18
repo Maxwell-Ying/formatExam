@@ -15,8 +15,8 @@ def get_multi_pronounce(new_words):
 def load_multi_pronounce(level):
     ret = []
     filename = os.path.join("book_data", "multi_pronounce_" + str(level) + ".txt")
-    with open(filename) as f:
-        for line in f:
+    with open(filename, encoding='utf-8') as f:
+        for line in f.readlines():
             line = line.strip()
             for letter in line:
                 ret.append(letter)

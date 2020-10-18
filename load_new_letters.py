@@ -4,7 +4,7 @@ import os
 def load_new_letters(level):
     filename = os.path.join("book_data", "new_letter_" + str(level) + ".txt")
     ret = {}
-    with open(filename) as f:
+    with open(filename, encoding="utf-8") as f:
         for line in f.readlines():
             line = line.strip()
             if not line:
